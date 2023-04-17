@@ -24,10 +24,19 @@
   background: linear-gradient(rgba(27, 24, 24, 0.596),rgba(19, 18, 18, 0.74)),url('/assets/pexels-matteo-badini-4496324.jpg');
 
 }
+
+
 .garden-2{
   background: linear-gradient(rgba(7, 7, 7, 0.616),rgba(7, 7, 7, 0.329)),url('/assets/pexels-karolina-grabowska-4207910.jpg');
-
 }
+
+
+.header{
+background: linear-gradient(rgba(7, 7, 7, 0.808),rgba(7, 7, 7, 0.712)),url('/assets/pexels-martin-péchy-1866149.jpg');
+background-position: center;
+}
+
+
 .blue-1{
   background-color: #145369 ;
-  }
+}

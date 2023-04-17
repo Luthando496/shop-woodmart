@@ -10,7 +10,10 @@ import Navbar from './components/Navbar';
 // module
 import {FaEnvelope,FaPhone,FaSearchLocation} from 'react-icons/fa'
 import Home from './pages/Home';
-
+import Cart from './pages/Cart';
+import Login from './pages/Login';
+import ProductDetails from './pages/ProductDetails';
+import {Routes,Route} from 'react-router-dom'
 
 
 function App() {
@@ -28,7 +31,13 @@ function App() {
     <>
     
     <Navbar />
-    <Home />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/product/" element={<ProductDetails />} />
+    </Routes>
+    
 
 
 
@@ -166,6 +175,13 @@ function App() {
     </div>
 
     </footer>
+
+    
+
+
+    
+
+
 
 
 
