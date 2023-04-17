@@ -12,7 +12,7 @@ import {FaEnvelope,FaPhone,FaSearchLocation} from 'react-icons/fa'
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Login from './pages/Login';
-import ProductDetails from './pages/ProductDetails';
+import Category from './pages/Category';
 import {Routes,Route} from 'react-router-dom'
 
 
@@ -35,7 +35,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/product/" element={<ProductDetails />} />
+      <Route path="/category/" element={<Category />} />
     </Routes>
     
 

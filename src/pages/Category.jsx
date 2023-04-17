@@ -1,23 +1,38 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import { Link } from 'react-router-dom';
+import {useDispatch,useSelector} from 'react-redux'
+import { fetchCategory } from '../store/actions.js/productAction';
 
 
 
 const ProductDetails = () => {
-  const [products,setProducts] = useState(null)
+  const total = useSelector(state => state.prod.products?.total)
+  const skip = useSelector(state => state.prod.products?.skip)
 
-  const fetchProducts = async()=>{
-  
-    const {data} = await axios.get('https://dummyjson.com/products')
-    setProducts(data)
-  
+  const [totalPage,setTotalPage] = useState(total || 1)
+  const [page,setPage] = useState(skip || 1)
+  const products = useSelector(state=>state.prod.products)
+
+
+
+
+  const handleChange=(e,page)=>{
+    console.log(page)
+    setPage(page)
   }
+
+  const dispatch = useDispatch()
 
 
   useEffect(()=>{
-    fetchProducts()
+    dispatch(fetchCategory())
 
-  },[])
+  },[dispatch])
+
+  console.log(products)
 
 
   return (
@@ -50,7 +65,7 @@ const ProductDetails = () => {
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
         {/* card */}
         {products && products?.products?.map((product,index)=>(
-        <div className="group w-full" key={index} >
+        <Link to={`/product/${product.id}`} className="group w-full" key={index} >
           <div className="img h-[20rem] overflow-hidden">
             <img src={product.thumbnail} className='w-full h-full group-hover:scale-150 duration-1000' alt="shoe" />
           </div>
@@ -59,11 +74,14 @@ const ProductDetails = () => {
             <h4 className="text-sm text-gray-300">{product.category}</h4>
             <span className="tex-md font-semibold text-orange-600">$ {product.price}</span>
           </div>
-        </div>
+        </Link>
         
         ))}
         {/*  */}
       </div>
+      {/* <Pagination count={totalPage} onChange={handleChange} page={page}  variant="outlined" shape="rounded" color="primary" className='w-[95%] lg:w-[90%] mx-auto py-[1rem]' size='large'   /> */}
+
+
     </div>
 
     </div>
