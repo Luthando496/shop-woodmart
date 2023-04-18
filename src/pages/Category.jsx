@@ -65,7 +65,7 @@ const ProductDetails = () => {
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
         {/* card */}
         {products && products?.products?.map((product,index)=>(
-        <Link to={`/product/${product.id}`} className="group w-full" key={index} >
+        <Link to={`/details/${product.id}`} className="group w-full" key={index} >
           <div className="img h-[20rem] overflow-hidden">
             <img src={product.thumbnail} className='w-full h-full group-hover:scale-150 duration-1000' alt="shoe" />
           </div>

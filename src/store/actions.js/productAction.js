@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {fetchProducts,fetchProductsFail} from '../store'
+import {fetchProducts,fetchProductsFail,details} from '../store'
 
 export const fetchCategory=()=>{
     return async (dispatch)=>{
@@ -35,3 +35,23 @@ export const fetchAllProducts=()=>{
     
     }
 }
+
+
+export const fetchDetails=(id)=>{
+    return async (dispatch)=>{
+        try{
+
+            const {data} = await axios.get(`https://dummyjson.com/products/${id}`)
+
+            dispatch(details(data))
+        
+        
+        }catch(err){
+        console.log(err)
+        }
+    
+    
+    }
+}
+
+

@@ -13,16 +13,12 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Login from './pages/Login';
 import Category from './pages/Category';
+import Details from './pages/Details';
 import {Routes,Route} from 'react-router-dom'
 
 
 function App() {
 
-  
-
-  // const updateToggle=(id)=>{
-  //   setToggle(id)
-  // }
 
 
 
@@ -36,6 +32,7 @@ function App() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/login" element={<Login />} />
       <Route path="/category/" element={<Category />} />
+      <Route path="/details/:id" element={<Details />} />
     </Routes>
     
 
