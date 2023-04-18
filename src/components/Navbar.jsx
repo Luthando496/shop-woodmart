@@ -60,29 +60,8 @@ const Navbar = () => {
       </ul>
     </div>}
 
-    <Button onClick={()=> setCart(!cartShow)}  variant="contained">Cart </Button >
-    {cartShow && <div className={`${cartShow ?'fixed  top-0 right-0 translate-x-[50%] duration-1000 z-40 bg-slate-900 h-full':'fixed top-0 right-0 translate-x-[-100%] duration-1000'}`}>
-      <div className="text-right pr-8">
-        <button className="lg:hidden text-[5rem] text-orange-600 " onClick={()=> setCart(!cartShow)} >
-          <FaTimes  />
-        </button>
-      </div>
+    <Link to='/cart'  className='px-4 hidden lg:block py-2 rounded-lg bg-sky-600'  variant="contained">Cart </Link>
 
-      <ul className="flex flex-col gap-8">
-      <li  className="hover:bg-white/10  cursor-pointer duration-700 px-6 py-4 rounded-2xl">
-        <a onClick={()=> setCart(!cartShow)} href='#overview' className=" lg:text-md font-semibold text-white">Overview</a>
-      </li>
-      <li  className="hover:bg-white/10 duration-700  cursor-pointer px-6 py-4 rounded-2xl">
-        <a onClick={()=> setCart(!cartShow)}  href='#features' className="lg:text-md font-semibold text-white">Features</a>
-      </li>
-      <li className="hover:bg-white/10 duration-700 cursor-pointer px-6 py-4 rounded-2xl">
-        <a onClick={()=> setCart(!cartShow)} href='#inter' className="lg:text-md font-semibold text-white">Intergrations</a>
-      </li>
-      <li className="hover:bg-white/10 duration-700 cursor-pointer px-6 py-4 rounded-2xl">
-        <a onClick={()=> setCart(!cartShow)} href='#pay' className=" lg:text-md font-semibold text-white">Money Services</a>
-      </li>
-      </ul>
-    </div>}
 
     </div>
      

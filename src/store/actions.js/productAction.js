@@ -1,11 +1,12 @@
 import axios from 'axios'
 import {fetchProducts,fetchProductsFail,details} from '../store'
 
-export const fetchCategory=()=>{
+export const fetchCategory=(name)=>{
     return async (dispatch)=>{
         try{
+            console.log(name)
 
-            const {data} = await axios.get('https://dummyjson.com/products/category/fragrances')
+            const {data} = await axios.get(`https://dummyjson.com/products/category/${name}`)
 
             dispatch(fetchProducts(data))
         
@@ -23,7 +24,7 @@ export const fetchAllProducts=()=>{
     return async (dispatch)=>{
         try{
 
-            const {data} = await axios.get('https://dummyjson.com/products/category/furniture')
+            const {data} = await axios.get('https://dummyjson.com/products')
 
             dispatch(fetchProducts(data))
         
