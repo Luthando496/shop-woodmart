@@ -21,7 +21,7 @@ const Header = () => {
     <SwiperSlide>
       <header className="w-full h-[90vh] relative">
         <div className="img absolute top-0 left-0 w-full h-full">
-          <img src="/assets/bed.jpg" alt="bed"  className='w-full h-full object-cover' />
+          <img src="/assets/korie-cull-IzIME1jwjCY-unsplash.jpg" alt="bed"  className='w-full h-full object-cover' />
         </div>
         <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
@@ -43,7 +43,7 @@ const Header = () => {
     <SwiperSlide>
       <header className="w-full h-[90vh] relative">
         <div className="img absolute top-0 left-0 w-full h-full">
-          <img src="/assets/chair-green.jpg" alt="bed"  className='w-full h-full object-cover' />
+          <img src="/assets/christian-wiediger-I8-T4lMCA6k-unsplash.jpg" alt="bed"  className='w-full h-full object-cover' />
         </div>
         <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
@@ -65,7 +65,7 @@ const Header = () => {
     <SwiperSlide>
       <header className="w-full h-[90vh] relative">
         <div className="img absolute top-0 left-0 w-full h-full">
-          <img src="/assets/chair-yellow-2.jpg" alt="bed"  className='w-full h-full object-cover' />
+          <img src="/assets/jimmy-chang-wqBeoCtU_Ic-unsplash.jpg" alt="bed"  className='w-full h-full object-cover' />
         </div>
         <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">

@@ -15,6 +15,7 @@ import Login from './pages/Login';
 import Category from './pages/Category';
 import Details from './pages/Details';
 import {Routes,Route} from 'react-router-dom'
+import Products from './pages/Products';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/products" element={<Products />} />
       <Route path="/category/:id" element={<Category />} />
       <Route path="/details/:id" element={<Details />} />
     </Routes>

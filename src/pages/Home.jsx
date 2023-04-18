@@ -153,14 +153,14 @@ const Home = () => {
       <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
       {/* card */}
       {products?.products?.slice(7,13).map(prod=> (
-      <div className="w-full">
+      <Link to={`/details/${prod.id}`} className="w-full">
           <div className="img overflow-hidden h-[190px] ">
             <img src={prod.thumbnail} alt={prod.title} className="w-full hover:scale-150 duration-700 h-full" />
           </div>
           <h2 className="text-xl my-2 text-center capitalize text-black font-semibold">{prod.title}</h2>
           <h2 className="text-sm my-1 text-center capitalize text-gray-400 font-light">Retail</h2>
           <h2 className="text-md my-1 text-center capitalize text-orange-400 font-semibold">${prod.price}</h2>
-        </div>
+        </Link>
       
       ))}
         {/*  */}
