@@ -1,5 +1,6 @@
 import {configureStore,createSlice} from '@reduxjs/toolkit'
 import {cartReducer} from './cartSlice'
+import {userReducer} from './userSlice'
 
 
 const productSlice = createSlice({
@@ -47,7 +48,8 @@ export const { fetchProducts, fetchProductsFail,details,detailsFail } = productS
 const store = configureStore({
     reducer: {
         prod:productSlice.reducer,
-        cart:cartReducer 
+        cart:cartReducer,
+        user:userReducer
     }
 })
 

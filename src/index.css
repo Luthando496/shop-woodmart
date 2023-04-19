@@ -43,3 +43,13 @@ background-position: center;
   background-color: #145369 ;
 }
 
+.login{
+  background: linear-gradient(rgba(7, 7, 7, 0.808),rgba(7, 7, 7, 0.712)),url('/assets/phillip-goldsberry-fZuleEfeA1Q-unsplash.jpg');
+  background-position: center;
+}
+
+.loginpage{
+  background: linear-gradient(rgba(0, 0, 0, 0.408), rgba(0, 0, 0, 0.412)),url('/assets/korie-cull-IzIME1jwjCY-unsplash.jpg');
+  background-position: center;
+  background-size: cover;
+}

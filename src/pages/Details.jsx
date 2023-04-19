@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import {FaArrowRight} from 'react-icons/fa'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { addToCart } from '../store/actions.js/cartActions';
+// import {addToCart} from '../store/actions/cartActions'
 
 
 const Details = () => {
@@ -21,6 +23,13 @@ const Details = () => {
         dispatch(fetchDetails(id))
 
     },[dispatch])
+    
+
+    const addCart=(item)=>{
+        dispatch(addToCart(item))
+    }
+
+
 
   return (
     <>
@@ -36,7 +45,7 @@ const Details = () => {
     //   navigation
       pagination={{ clickable: true }}
     //   scrollbar={{ draggable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
+    //   onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}
       className='w-full'
     >
@@ -66,7 +75,7 @@ const Details = () => {
         <h4 className="text-sm text-gray-600">Category</h4>
         <h4 className="text-sm text-gray-600">{product?.category}</h4>
     </div>
-    <button className="px-6 py-4 rounded-2xl mt-6 hover:bg-emerald-600 duration-1000 text-2xl capitalize bg-cyan-700 font-semibold text-white shadow-2xl shadow-red-300 hover:translate-y-2 ">Add To Cart</button>
+    <button className="px-6 py-4 rounded-2xl mt-6 hover:bg-emerald-600 duration-1000 text-2xl capitalize bg-cyan-700 font-semibold text-white shadow-2xl shadow-red-300 hover:translate-y-2" onClick={()=> addCart(product)}  >Add To Cart </button>
 
     </div>
     {/*  */}

@@ -12,6 +12,7 @@ const Header = () => {
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       spaceBetween={0}
       slidesPerView={1}
+      // direction='vertical'
       navigation
       pagination={{ clickable: true }}
       // scrollbar={{ draggable: true }}
