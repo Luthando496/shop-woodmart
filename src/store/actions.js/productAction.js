@@ -1,10 +1,10 @@
 import axios from 'axios'
-import {fetchProducts,fetchProductsFail,details,sortHigh,sortLow,request} from '../store'
+import {fetchProducts,fetchProductsFail,details,sortHigh,sortLow,request,sortRating} from '../store'
 
 export const fetchCategory=(name)=>{
     return async (dispatch)=>{
         try{
-            console.log(name)
+            dispatch(request())
 
             const {data} = await axios.get(`https://dummyjson.com/products/category/${name}`)
 
@@ -69,5 +69,11 @@ return dispatch=>{
 export const lowSort=()=>{
 return dispatch=>{
     dispatch(sortLow())
+}
+}
+
+export const rating =()=>{
+return dispatch=>{
+    dispatch(sortRating())
 }
 }

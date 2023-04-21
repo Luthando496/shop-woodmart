@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import { Link,useParams } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
-import { fetchAllProducts, highSort, lowSort } from '../store/actions.js/productAction';
+import { fetchAllProducts, highSort, lowSort,rating } from '../store/actions.js/productAction';
 
 
 
@@ -16,10 +16,7 @@ const Products = () => {
   const products = useSelector(state=>state.prod.products)
   const name= useParams().id
 
-  const hightToLow=()=>{
-    const data = products?.sort((a,b)=>b.price + a.price)
-  
-  }
+
 
 
 
@@ -28,8 +25,16 @@ const Products = () => {
     if(e.target.value === 'high'){
     dispatch(highSort())
     }
+
     if(e.target.value === 'low'){
-    dispatch(lowSort())}
+    dispatch(lowSort())
+  }
+
+  if(e.target.value === 'rating'){
+    dispatch(rating())
+  }
+
+
   }
 
   const dispatch = useDispatch()
@@ -62,8 +67,9 @@ const Products = () => {
     <div className="col-span-8">
     <div className="flex justify-end py-8">
     <select onChange={handleSort} defaultValue='default sorting' className='py-6 px-6 rounded-2xl bg-slate-700 text-white font-semibold' >
-      <option value="popularity"  >Sort By Popularity</option>
+      <option value="default"  >Sort By Default</option>
       <option value="low">Sort By Price: low to high</option>
+      <option value="rating">Sort By Rating</option>
       <option value="high">Sort By Price: high to low</option>
     </select>
 
@@ -72,17 +78,29 @@ const Products = () => {
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
         {/* card */}
         {products?.map((product,index)=>(
-        <Link to={`/details/${product.id}`} className="group w-full" key={index} >
+        <Link to={`/details/${product.id}`} className="group w-full shadow-xl " key={index} >
           <div className="img h-[20rem] overflow-hidden">
             <img src={product.thumbnail} className='w-full h-full group-hover:scale-150 duration-1000' alt="shoe" />
           </div>
-          <div className="text-center py-2">
-            <h3 className="text-md text-black/80 capitalize">{product.title}</h3>
-            <h4 className="text-sm text-gray-300">{product.category}</h4>
-            <span className="tex-md font-semibold text-orange-600">$ {product.price}</span>
+          <div className="text-center py-2  bg-gray-300/40 space-y-3">
+            <h3 className="text-md tracking-[2px] text-black/80 capitalize"><span className="text-md tracking-[2px] text-amber-800 font-semibold roboto">Title :</span> {product.title}</h3>
+            <div className="flex justify-center">
+            <span className="text-md tracking-[2px] text-amber-800 font-semibold roboto">Title :</span>
+            <h4 className="text-md tracking-[2px] capitalize text-gray-700">{' '} {product.category}</h4>
+            </div>
+
+            <div className="flex justify-center">
+            <span className="text-md tracking-[2px] text-amber-800 font-semibold roboto">Price :</span>
+            <h4 className="text-md tracking-[2px] capitalize text-gray-700">{' '} {product.price}</h4>
+            </div>
+
+            <div className="flex justify-center">
+            <span className="text-md tracking-[2px] text-amber-800 font-semibold roboto">Rating :</span>
+            <h4 className="text-md tracking-[2px] capitalize text-gray-700">{' '} {parseInt(product.rating)}</h4>
+            </div>
+
           </div>
         </Link>
-        
         ))}
         {/*  */}
       </div>

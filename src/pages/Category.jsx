@@ -1,10 +1,9 @@
 import React,{useEffect,useState} from 'react'
-import axios from 'axios'
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 import { Link,useParams } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
 import { fetchCategory } from '../store/actions.js/productAction';
+import {Vortex} from 'react-loader-spinner'
+import { highSort, lowSort,rating } from '../store/actions.js/productAction';
 
 
 
@@ -15,14 +14,24 @@ const ProductDetails = () => {
   const [totalPage,setTotalPage] = useState(total || 1)
   const [page,setPage] = useState(skip || 1)
   const products = useSelector(state=>state.prod.products)
+  const loading = useSelector(state=>state.prod.loading)
   const name= useParams().id
 
 
 
 
-  const handleChange=(e,page)=>{
-    console.log(page)
-    setPage(page)
+  const handleSort=(e)=>{
+    if(e.target.value === 'high'){
+    dispatch(highSort())
+    }
+
+    if(e.target.value === 'low'){
+    dispatch(lowSort())
+  }
+
+  if(e.target.value === 'rating'){
+    dispatch(rating())
+  }
   }
 
   const dispatch = useDispatch()
@@ -39,14 +48,25 @@ const ProductDetails = () => {
   return (
     <>
     <header className="header  w-full py-[10rem]">
-    <h1 className="text-5xl thin-light text-white/70 text-center">All Products</h1>
+    <h1 className="text-5xl thin-light uppercase text-white/70 text-center">{name}</h1>
     <div className="w-[9rem] mx-auto h-[2px] mt-5 bg-yellow-500"></div>
     </header>
     {/*  */}
 
 
     <section className="pt-8 pb-16 w-full">
-    <div className="px-12 flex flex-col lg:grid lg:grid-cols-8 gap-4 ">
+    {loading ? <div className="w-full flex justify-center">
+    <Vortex visible={true}
+        height="400"
+        width="400"
+
+        ariaLabel="vortex-loading"
+        wrapperStyle={{}}
+        wrapperClass="vortex-wrapper"
+        colors={['black', 'pink', 'blue', 'yellow', 'orange', 'purple']}
+        />
+    </div> :(
+      <div className="px-12 flex flex-col lg:grid lg:grid-cols-8 gap-4 ">
     {/* <div className="col-span-2 px-2 lg:pt-28">
     <h2 className="text-2xl font-semibold text-black/70 capitalize">Filter By Brand</h2>
 
@@ -54,18 +74,18 @@ const ProductDetails = () => {
     </div> */}
     <div className="col-span-8">
     <div className="flex justify-end py-8">
-    <select  defaultValue='default sorting' className='py-6 px-6 rounded-2xl bg-slate-700 text-white font-semibold' >
-      <option value="popularity">Sort By Popularity</option>
-      <option value="">Sort By Rating</option>
-      <option value="">Sort By Price: low to high</option>
-      <option value="">Sort By Price: high to low</option>
+    <select onChange={handleSort} defaultValue='default sorting' className='py-6 px-6 rounded-2xl bg-slate-700 text-white font-semibold' >
+      <option value="default"  >Sort By Default</option>
+      <option value="low">Sort By Price: low to high</option>
+      <option value="rating">Sort By Rating</option>
+      <option value="high">Sort By Price: high to low</option>
     </select>
 
     </div>
     <div className="pt-4">
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
         {/* card */}
-        {products && products?.products?.map((product,index)=>(
+        {products && products?.map((product,index)=>(
         <Link to={`/details/${product.id}`} className="group w-full" key={index} >
           <div className="img h-[20rem] overflow-hidden">
             <img src={product.thumbnail} className='w-full h-full group-hover:scale-150 duration-1000' alt="shoe" />
@@ -89,6 +109,8 @@ const ProductDetails = () => {
 
 
     </div>
+    ) }
+    
     </section>
 
     </>

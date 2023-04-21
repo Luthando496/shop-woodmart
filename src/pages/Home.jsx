@@ -274,7 +274,7 @@ const Home = () => {
       // scrollbar={{ draggable: true }}
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')} className='mt-8'  >
-      {products?.slice(0,9).map(prod=> (
+      {products?.slice(9,19).map(prod=> (
         <SwiperSlide>
           {/* card */}
       <Link to={`/details/${prod.id}`} className="w-full border">

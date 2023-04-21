@@ -38,7 +38,11 @@ const productSlice = createSlice({
         },
         sortLow(state,action){
         state.products = state.products?.sort((a,b)=>a.price + b.price)
-              
+        
+    },
+    sortRating(state,action){
+        state.products = state.products?.sort((a,b)=>a.rating + b.rating)
+        
         }
 
     },
@@ -49,7 +53,7 @@ const productSlice = createSlice({
 
 
 
-export const { fetchProducts, fetchProductsFail,details,detailsFail,sortHigh,sortLow,request } = productSlice.actions;
+export const { fetchProducts, fetchProductsFail,details,detailsFail,sortHigh,sortLow,request ,sortRating} = productSlice.actions;
 
 
 const store = configureStore({
