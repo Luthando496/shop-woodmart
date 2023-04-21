@@ -20,11 +20,12 @@ export const fetchCategory=(name)=>{
 }
 
 
-export const fetchAllProducts=()=>{
+export const fetchAllProducts=(page=0)=>{
     return async (dispatch)=>{
         try{
+            dispatch(request())
 
-            const {data} = await axios.get('https://dummyjson.com/products')
+            const {data} = await axios.get(`https://dummyjson.com/products?skip=${page}&limit=70`)
 
             dispatch(fetchProducts(data))
         

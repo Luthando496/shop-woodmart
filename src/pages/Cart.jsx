@@ -9,7 +9,6 @@ import { RemoveItem, clearCartAction } from '../store/actions.js/cartActions'
 
 const Cart = () => {
   const {products} = useSelector(state => state.cart)
-  console.log(products)
   const dispatch = useDispatch()
   const totalAmount = products?.reduce((acc, item) => acc +  item.price,0)
   const total = totalAmount + 30

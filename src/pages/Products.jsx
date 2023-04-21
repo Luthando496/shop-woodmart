@@ -2,7 +2,8 @@ import React,{useEffect,useState} from 'react'
 import { Link,useParams } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
 import { fetchAllProducts, highSort, lowSort,rating } from '../store/actions.js/productAction';
-
+import {Vortex} from 'react-loader-spinner'
+import Pagination from '@mui/material/Pagination'
 
 
 
@@ -11,9 +12,9 @@ const Products = () => {
   const total = useSelector(state => state.prod.products?.total)
   const skip = useSelector(state => state.prod.products?.skip)
 
-  const [totalPage,setTotalPage] = useState(total || 1)
-  const [page,setPage] = useState(skip || 1)
+  const [page,setPage] = useState(skip || 0)
   const products = useSelector(state=>state.prod.products)
+  const loading = useSelector(state=>state.prod.loading)
   const name= useParams().id
 
 
@@ -37,13 +38,18 @@ const Products = () => {
 
   }
 
+  const handleChange=(e,page)=>{
+      console.log(page)
+      setPage(page)
+    }
+
   const dispatch = useDispatch()
 
 
   useEffect(()=>{
-    dispatch(fetchAllProducts())
+    dispatch(fetchAllProducts(page))
 
-  },[dispatch])
+  },[dispatch,page])
 
   console.log(products)
 
@@ -75,7 +81,19 @@ const Products = () => {
 
     </div>
     <div className="pt-4">
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+
+      {loading ? <div className="w-full flex justify-center">
+    <Vortex visible={true}
+        height="400"
+        width="400"
+
+        ariaLabel="vortex-loading"
+        wrapperStyle={{}}
+        wrapperClass="vortex-wrapper"
+        colors={['black', 'pink', 'blue', 'yellow', 'orange', 'purple']}
+        />
+    </div> : 
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* card */}
         {products?.map((product,index)=>(
         <Link to={`/details/${product.id}`} className="group w-full shadow-xl " key={index} >
@@ -104,7 +122,11 @@ const Products = () => {
         ))}
         {/*  */}
       </div>
-      {/* <Pagination count={totalPage} onChange={handleChange} page={page}  variant="outlined" shape="rounded" color="primary" className='w-[95%] lg:w-[90%] mx-auto py-[1rem]' size='large'   /> */}
+    
+    }
+
+    <Pagination count={9} onChange={handleChange} page={page} variant="outlined" color="secondary" className='w-[80%] mx-auto py-[1rem] my-8 shadow-xl px-6 shadow-orange-500 bg-cyan-600'   />
+      
 
 
     </div>

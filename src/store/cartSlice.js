@@ -40,7 +40,7 @@ const cartSlice = createSlice({
             const id = action.payload
             state.products = state.products.filter(pro=> pro.id !== id)
             state.total_items = state.products.length;
-            localStorage.setItem('cart',JSON.stringify(state))
+            localStorage.setItem('cart',JSON.stringify(state.products))
         },
         clearCart(state,action){
             state.total_items = state.products.length;

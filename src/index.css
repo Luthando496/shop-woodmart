@@ -65,3 +65,12 @@ background-position: center;
 table tbody tr:nth-of-type(even){
 background-color: #b0bcc0;
 }
+
+.counter::before{
+  content: '';
+  margin-bottom: -3rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+}
