@@ -1,11 +1,18 @@
 import {cartActions} from '../cartSlice'
+import axios from 'axios'
 
 
-export const addToCart = (product) => (dispatch) => {
-    console.log(product)
-    dispatch(cartActions.addToCart(product))
+export const addToCart = (item) => async(dispatch) => {
+        console.log(item)
+        dispatch(cartActions.addToCart(item))
+    
 
 
-    // localStorage.setItem('cart', JSON.stringify(product))
+
+}
+
+export const clearCartAction = () => async(dispatch) => {
+    dispatch(cartActions.clearCart())
+
 
 }

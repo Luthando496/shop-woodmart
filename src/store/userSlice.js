@@ -1,14 +1,14 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 
-const getUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+// const getUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
 
 
 
 const userSlice = createSlice({
     name:'user',
-    initialState:{user:getUser},
+    initialState:{user:null},
     reducers:{
 
         signInUser(state,action){

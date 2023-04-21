@@ -2,8 +2,9 @@ import React,{useState} from 'react'
 import {FaMoneyBillAlt,FaBuilding,FaHandsHelping,FaWallet,FaEnvelope,FaPhone,FaSearchLocation,FaTimes} from 'react-icons/fa'
 import {CiMenuBurger} from 'react-icons/ci'
 import { Link } from 'react-router-dom'
-import Button from '@mui/material/Button';
-
+import {useSelector} from 'react-redux'
+import {signOut } from "firebase/auth";
+import { auth } from '../firebase'
 
 
 const Navbar = () => {
@@ -11,6 +12,14 @@ const Navbar = () => {
     const [toggle,setToggle]= useState(1)
     const [show,setShow]= useState(false)
     const [cartShow,setCart]= useState(false)
+    const {user} = useSelector(state => state.user)
+
+    const logOut =()=>{
+      signOut(auth)
+    
+    }
+
+    
 
 
   return (
@@ -23,7 +32,8 @@ const Navbar = () => {
         <Link to='/' className=" lg:text-md font-semibold text-white">Home</Link>
       </li>
       <li className="hover:bg-white/10 duration-700  cursor-pointer px-6 py-4 rounded-2xl">
-        <Link to='/login' className=" lg:text-md font-semibold text-white">Login</Link>
+      {user?.displayName ? <Link to='/' onClick={logOut}  className=" lg:text-md font-semibold text-white">Logout</Link>:<Link to='/login' className=" lg:text-md font-semibold text-white">Login</Link> }
+        
       </li>
       <li className="hover:bg-white/10 duration-700 cursor-pointer px-6 py-4 rounded-2xl">
         <Link to='/products' className=" lg:text-md font-semibold text-white">All Products</Link>

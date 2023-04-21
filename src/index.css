@@ -53,3 +53,7 @@ background-position: center;
   background-position: center;
   background-size: cover;
 }
+
+table tbody tr:nth-of-type(even){
+background-color: #b0bcc0;
+}

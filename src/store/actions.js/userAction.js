@@ -19,10 +19,10 @@ export const register =(email,password)=>{
 
 
 
-export const signIn =()=>{
+export const signIn =(data)=>{
     return async dispatch=>{
 
-        const data = {email,password}
+        // const data = {email,password}
 
         dispatch(userActions.signInUser(data))
 
