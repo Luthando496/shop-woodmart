@@ -16,3 +16,7 @@ export const clearCartAction = () => async(dispatch) => {
 
 
 }
+
+export const RemoveItem = (id) => async(dispatch) => {
+    dispatch(cartActions.RemoveItem(id))
+}

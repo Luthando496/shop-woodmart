@@ -7,6 +7,9 @@ import {FaArrowRight} from 'react-icons/fa'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { addToCart } from '../store/actions.js/cartActions';
 // import {addToCart} from '../store/actions/cartActions'
+import {Vortex} from 'react-loader-spinner'
+
+
 
 
 const Details = () => {
@@ -14,7 +17,7 @@ const Details = () => {
     const {id} = useParams();
 
 
-    const {product} = useSelector(state => state.prod)
+    const {product,loading} = useSelector(state => state.prod)
     const [toggle,setToggle]= useState(1)
 
     console.log(product)
@@ -34,8 +37,22 @@ const Details = () => {
   return (
     <>
     <section className="bg-gray-300/10 py-8">
+    {loading ?( <div className="w-full flex justify-center">
+    <Vortex visible={true}
+        height="400"
+        width="400"
+
+        ariaLabel="vortex-loading"
+        wrapperStyle={{}}
+        wrapperClass="vortex-wrapper"
+        colors={['black', 'pink', 'blue', 'yellow', 'orange', 'purple']}
+        />
+    </div>
+    ) :(
+
     <div className="px-12 pt-8 flex flex-col lg:grid lg:grid-cols-9 gap-2">
     {/* left */}
+
     <div className="col-span-4 w-full">
     <Swiper
       // install Swiper modules
@@ -78,9 +95,15 @@ const Details = () => {
     <button className="px-6 py-4 rounded-2xl mt-6 hover:bg-emerald-600 duration-1000 text-2xl capitalize bg-cyan-700 font-semibold text-white shadow-2xl shadow-red-300 hover:translate-y-2" onClick={()=> addCart(product)}  >Add To Cart </button>
 
     </div>
+
+
+        
+
+    
     {/*  */}
 
     </div>
+        )}
 
     </section>
 

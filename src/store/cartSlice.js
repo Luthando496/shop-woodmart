@@ -5,11 +5,11 @@ const getCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('
 
 const cartSlice = createSlice({
     name:'cart',
-    initialState:{cart:{products:getCart,total:0,total_items:0}},
+    initialState:{products:getCart,total:0,total_items:0},
     reducers:{
         addToCart(state,action){
             const product =action.payload
-            const exist = state.cart.products?.find(pro => pro.id === product.id)
+            const exist = state.products?.find(pro => pro.id === product.id)
 
             if(exist){
             
@@ -17,7 +17,7 @@ const cartSlice = createSlice({
                 exist.price = exist.price + action.payload.price;
                 
             }else{
-                state.cart.products.push({
+                state.products.push({
                     title:product.title,
                     id:product.id,
                     price:product.price,
@@ -28,21 +28,23 @@ const cartSlice = createSlice({
 
 
             }
-            state.cart.total_items = state.cart.products.length;
-            state.total = state.cart.products.reduce((a,b)=>a+b.price,0);
+            state.total_items = state.products.length;
+            state.total = state.products.reduce((a,b)=>a+b.price,0);
 
-            localStorage.setItem('cart',JSON.stringify(state.cart))
+            localStorage.setItem('cart',JSON.stringify(state.products))
             
             
             
         },
         RemoveItem(state,action){
             const id = action.payload
-            state.cart.products = state.cart.products.filter(pro=> pro.id !== id)
-            localStorage.setItem('cart',JSON.stringify(state.cart))
+            state.products = state.products.filter(pro=> pro.id !== id)
+            state.total_items = state.products.length;
+            localStorage.setItem('cart',JSON.stringify(state))
         },
         clearCart(state,action){
-            state.cart.products = []
+            state.total_items = state.products.length;
+            state.products = []
             localStorage.removeItem('cart')
         },
     }

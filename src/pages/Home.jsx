@@ -107,7 +107,7 @@ const Home = () => {
       // scrollbar={{ draggable: true }}
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}  className="img w-full h-[65vh] mt-16">
-      {products?.products?.slice(0,9).map(prod=> (
+      {products?.slice(0,9).map(prod=> (
       <SwiperSlide key={prod.id}>
       <img  key={prod.id} src={prod.thumbnail} alt="image" className="w-full object-cover  h-full duration-700" />
       </SwiperSlide>
@@ -152,7 +152,7 @@ const Home = () => {
       <div className="w-full bg-red-600 h-[2px] mt-[1rem]"></div>
       <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
       {/* card */}
-      {products?.products?.slice(7,13).map(prod=> (
+      {products?.slice(7,13).map(prod=> (
       <Link to={`/details/${prod.id}`} className="w-full">
           <div className="img overflow-hidden h-[190px] ">
             <img src={prod.thumbnail} alt={prod.title} className="w-full hover:scale-150 duration-700 h-full" />
@@ -186,7 +186,7 @@ const Home = () => {
       <div className="w-full bg-red-600 h-[2px] mt-[1rem]"></div>
       <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
       {/* card */}
-      {products?.products?.slice(-7,-1).map(prod=> (
+      {products?.slice(-7,-1).map(prod=> (
       <Link to={`/details/${prod.id}`} className="w-full">
           <div className="img overflow-hidden h-[190px] ">
             <img src={prod.thumbnail} alt={prod.title} className="w-full hover:scale-150 duration-700 h-full" />
@@ -215,7 +215,7 @@ const Home = () => {
       // scrollbar={{ draggable: true }}
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}  className="img w-full h-[65vh] mt-16">
-      {products?.products?.slice(0,9).map(prod=> (
+      {products?.slice(0,9).map(prod=> (
       <SwiperSlide key={prod.id}>
       <img  key={prod.id} src={prod.thumbnail} alt="image" className="w-full object-cover  h-full duration-700" />
       </SwiperSlide>
@@ -274,7 +274,7 @@ const Home = () => {
       // scrollbar={{ draggable: true }}
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')} className='mt-8'  >
-      {products?.products?.slice(0,9).map(prod=> (
+      {products?.slice(0,9).map(prod=> (
         <SwiperSlide>
           {/* card */}
       <Link to={`/details/${prod.id}`} className="w-full border">
@@ -349,7 +349,7 @@ const Home = () => {
       <div className="w-full bg-red-600 h-[2px] mt-[1rem]"></div>
       <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
       {/* card */}
-      {products?.products?.slice(0,9).map(prod=> (
+      {products?.slice(0,9).map(prod=> (
       <Link to={`/details/${prod.id}`} className="w-full border border-sky-200">
           <div className="img overflow-hidden h-[190px] ">
             <img src={prod.thumbnail} alt={prod.title} className="w-full hover:scale-150 duration-700 h-full" />

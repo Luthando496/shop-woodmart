@@ -17,7 +17,7 @@ const productSlice = createSlice({
         },
         fetchProducts: (state, action) => {
             state.loading = true
-            state.products = action.payload;
+            state.products = action.payload.products;
             state.loading = false;
         },
         fetchProductsFail: (state, action) => {
@@ -25,7 +25,6 @@ const productSlice = createSlice({
             state.loading = false;
         },
         details(state,action){
-            state.state = true
             state.product = action.payload
             state.loading = false
         },
@@ -33,6 +32,14 @@ const productSlice = createSlice({
             state.error = action.payload
             state.loading = false
         },
+        sortHigh(state,action){
+        state.products = state.products.sort((a,b)=>b.price - a.price)
+            
+        },
+        sortLow(state,action){
+        state.products = state.products?.sort((a,b)=>a.price + b.price)
+              
+        }
 
     },
 
@@ -42,7 +49,7 @@ const productSlice = createSlice({
 
 
 
-export const { fetchProducts, fetchProductsFail,details,detailsFail } = productSlice.actions;
+export const { fetchProducts, fetchProductsFail,details,detailsFail,sortHigh,sortLow,request } = productSlice.actions;
 
 
 const store = configureStore({

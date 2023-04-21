@@ -1,22 +1,25 @@
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import {AiOutlinePlus,AiOutlineMinus} from 'react-icons/ai'
-import { clearCartAction } from '../store/actions.js/cartActions'
-
+import {FaTimes} from 'react-icons/fa'
+import { RemoveItem, clearCartAction } from '../store/actions.js/cartActions'
 
 
 
 
 const Cart = () => {
-  const cart = useSelector(state => state.cart.cart)
-  console.log(cart.products)
+  const {products} = useSelector(state => state.cart)
+  console.log(products)
   const dispatch = useDispatch()
-  const totalAmount = cart?.products?.reduce((acc, item) => acc +  item.price,0)
+  const totalAmount = products?.reduce((acc, item) => acc +  item.price,0)
   const total = totalAmount + 30
-
+  const total_items = products?.length
 
   const clearCart=()=>{
   dispatch(clearCartAction())
+  }
+  const handleRemove=(id)=>{
+  dispatch(RemoveItem(id))
   }
 
 
@@ -27,7 +30,7 @@ const Cart = () => {
       <div className="lg:px-20 px-10 col-span-2 mb-10 w-full">
       <div className="flex justify-between items-center">
         <h2 className="text-black text-2xl font-semibold">Shopping Cart</h2>
-        <h2 className="text-black text-2xl font-semibold">3 Items</h2>
+        <h2 className="text-black text-2xl font-semibold">{total_items} Items</h2>
       </div>
       {/* <input type="number" value={8} /> */}
 
@@ -45,10 +48,11 @@ const Cart = () => {
             <th className="px-4 py-8 text-gray-800 font-bold text-md lg:text-2xl">Price</th>
             <th className="px-4 py-8 text-gray-800 font-bold text-md lg:text-2xl">Quantity</th>
             <th className="px-4 py-8 text-gray-800 font-bold text-md lg:text-2xl">Total</th>
+            <th className="px-4 py-8 text-gray-800 font-bold text-md lg:text-2xl">Remove</th>
           </tr>
         </thead>
         <tbody>
-        {cart.products?.map((product,index) => (
+        {products?.map((product,index) => (
           <tr className='my-8 border-b border-b-red-700' key={product.id}>
           <td className="px-2 text-gray-500 text-center font-light flex gap-6 items-center">
             <img src={product.thumbnail} className='w-[70px] md:w-[150px] lg:w-[200px] lg:h-[200px]' alt="lamp" />
@@ -57,6 +61,11 @@ const Cart = () => {
           <td className="px-2  text-black/70 tracking-[2px] text-center font-semibold">${product.price}</td>
           <td className="px-2  text-black/70 tracking-[2px] text-center font-semibold relative">{product.stock}</td>
           <td className="px-2  text-black/70 tracking-[2px] text-center font-semibold">$ {product.price}</td>
+          <td className="px-2  text-black/70 tracking-[2px] text-center font-semibold"> 
+          <button onClick={(e)=>handleRemove(product.id)}  className="px-4 py-2 rounded-lg bg-red-500">
+            <FaTimes />
+          </button> 
+          </td>
         </tr>
         ))}
 

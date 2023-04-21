@@ -39,8 +39,8 @@ const ProductDetails = () => {
   return (
     <>
     <header className="header  w-full py-[10rem]">
-    <h1 className="text-5xl thin-light text-white/70 text-center">{name}</h1>
-    <div className="w-[9rem] mx-auto h-[2px] mt-3 bg-yellow-500"></div>
+    <h1 className="text-5xl thin-light text-white/70 text-center">All Products</h1>
+    <div className="w-[9rem] mx-auto h-[2px] mt-5 bg-yellow-500"></div>
     </header>
     {/*  */}
 
