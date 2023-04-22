@@ -50,7 +50,7 @@ const Header = () => {
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
           <div className="w-full h-full space-y-6 mt-24">
             <h2 className="text-amber-500 uppercase text-center font-semibold text-xl">Time for a new speaker</h2>
-            <h1 className="text-white font-semibold capitalize leading-normal text-5xl text-center">Bring the best experience home<br/> with a speaker from marshall.</h1>
+            <h1 className="text-white font-semibold capitalize leading-normal text-5xl text-center">Buy The Best Home Equipment<br/> For An Excellent Holiday. </h1>
             <div className="w-full flex justify-center">
             <div className="flex gap-8">
               <button className="text-xl px-6 shadow-xl hover:bg-slate-600 duration-700 shadow-gray-700 py-4 text-white bg-slate-800 rounded-2xl">View More</button>

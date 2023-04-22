@@ -1,21 +1,23 @@
-import { useState } from 'react'
+import { useState,lazy,Suspense } from 'react'
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 // components
+import {Vortex} from 'react-loader-spinner'
+
 
 import Navbar from './components/Navbar';
 // module
 import {FaEnvelope,FaPhone,FaSearchLocation} from 'react-icons/fa'
-import Home from './pages/Home';
-import Cart from './pages/Cart';
-import Login from './pages/Login';
-import Category from './pages/Category';
-import Details from './pages/Details';
+const Home = lazy(()=> import('./pages/Home'))
+const Cart = lazy(()=> import('./pages/Cart'))
+const Login = lazy(()=> import('./pages/Login'))
+const Category = lazy(()=> import('./pages/Category'))
+const Details = lazy(()=> import('./pages/Details'))
 import {Routes,Route} from 'react-router-dom'
-import Products from './pages/Products';
+const Products = lazy(()=> import('./pages/Products'))
 
 
 function App() {
@@ -28,6 +30,15 @@ function App() {
     <>
     
     <Navbar />
+    <Suspense fallback={<div className='w-full h-[60vh] flex justify-center items-center'><Vortex visible={true}
+        height="400"
+        width="400"
+
+        ariaLabel="vortex-loading"
+        wrapperStyle={{}}
+        wrapperClass="vortex-wrapper"
+        colors={['black', 'pink', 'blue', 'yellow', 'orange', 'purple']}
+        /></div>}>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
@@ -36,6 +47,7 @@ function App() {
       <Route path="/category/:id" element={<Category />} />
       <Route path="/details/:id" element={<Details />} />
     </Routes>
+    </Suspense>
     
 
 
