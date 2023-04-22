@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import {Link} from 'react-router-dom'
 
 
 
@@ -31,8 +31,8 @@ const Header = () => {
             <h1 className="text-white font-semibold capitalize leading-normal text-5xl text-center">Bring the best experience home<br/> with a speaker from marshall.</h1>
             <div className="w-full flex justify-center">
             <div className="flex gap-8">
-              <button className="text-xl px-6 shadow-xl hover:bg-slate-600 duration-700 shadow-gray-700 py-4 text-white bg-slate-800 rounded-2xl">View More</button>
-              <button className="text-xl px-6 hover:bg-red-800 duration-700 hover:text-black py-4 text-white bg-slate-800 rounded-2xl">To Shop</button>
+            <Link to='/products' className="text-xl px-6 shadow-xl hover:bg-slate-600 duration-700 shadow-gray-700 py-4 text-white bg-slate-800 rounded-2xl">View More</Link>
+              <Link to='/products' className="text-xl px-6 hover:bg-red-800 duration-700 hover:text-black py-4 text-white bg-slate-800 rounded-2xl">To Shop</Link>
             </div>
 
             </div>
@@ -53,8 +53,8 @@ const Header = () => {
             <h1 className="text-white font-semibold capitalize leading-normal text-5xl text-center">Buy The Best Home Equipment<br/> For An Excellent Holiday. </h1>
             <div className="w-full flex justify-center">
             <div className="flex gap-8">
-              <button className="text-xl px-6 shadow-xl hover:bg-slate-600 duration-700 shadow-gray-700 py-4 text-white bg-slate-800 rounded-2xl">View More</button>
-              <button className="text-xl px-6 hover:bg-red-800 duration-700 hover:text-black py-4 text-white bg-slate-800 rounded-2xl">To Shop</button>
+            <Link to='/products' className="text-xl px-6 shadow-xl hover:bg-slate-600 duration-700 shadow-gray-700 py-4 text-white bg-slate-800 rounded-2xl">View More</Link>
+              <Link to='/products' className="text-xl px-6 hover:bg-red-800 duration-700 hover:text-black py-4 text-white bg-slate-800 rounded-2xl">To Shop</Link>
             </div>
 
             </div>
@@ -75,8 +75,8 @@ const Header = () => {
             <h1 className="text-white font-semibold capitalize leading-normal text-5xl text-center">Bring the best experience home<br/> with a speaker from marshall.</h1>
             <div className="w-full flex justify-center">
             <div className="flex gap-8">
-              <button className="text-xl px-6 shadow-xl hover:bg-slate-600 duration-700 shadow-gray-700 py-4 text-white bg-slate-800 rounded-2xl">View More</button>
-              <button className="text-xl px-6 hover:bg-red-800 duration-700 hover:text-black py-4 text-white bg-slate-800 rounded-2xl">To Shop</button>
+              <Link to='/products' className="text-xl px-6 shadow-xl hover:bg-slate-600 duration-700 shadow-gray-700 py-4 text-white bg-slate-800 rounded-2xl">View More</Link>
+              <Link to='/products' className="text-xl px-6 hover:bg-red-800 duration-700 hover:text-black py-4 text-white bg-slate-800 rounded-2xl">To Shop</Link>
             </div>
 
             </div>
