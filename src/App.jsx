@@ -11,6 +11,8 @@ import {Vortex} from 'react-loader-spinner'
 import Navbar from './components/Navbar';
 // module
 import {FaEnvelope,FaPhone,FaSearchLocation} from 'react-icons/fa'
+
+const ScrollToTop = lazy(()=> import('./Utils/ScrollToTop'))
 const Home = lazy(()=> import('./pages/Home'))
 const Cart = lazy(()=> import('./pages/Cart'))
 const Login = lazy(()=> import('./pages/Login'))
@@ -47,6 +49,7 @@ function App() {
       <Route path="/category/:id" element={<Category />} />
       <Route path="/details/:id" element={<Details />} />
     </Routes>
+    <ScrollToTop  />
     </Suspense>
     
 
